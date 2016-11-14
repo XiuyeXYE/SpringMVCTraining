@@ -19,7 +19,7 @@ public class HelloController {
 		return "view";
 	}
 
-	@RequestMapping("")
+	@RequestMapping("upload.do")
 	public void processUpload(@RequestPart("uploadTagFileInputName")byte [] fileByte){
 
 	}
