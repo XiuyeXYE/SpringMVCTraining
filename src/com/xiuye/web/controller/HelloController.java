@@ -1,6 +1,7 @@
 package com.xiuye.web.controller;
 
 import org.springframework.stereotype.Controller;
+import org.springframework.validation.Errors;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestPart;
@@ -20,7 +21,7 @@ public class HelloController {
 	}
 
 	@RequestMapping("upload.do")
-	public void processUpload(@RequestPart("uploadTagFileInputName")byte [] fileByte){
+	public void processUpload(@RequestPart("uploadTagFileInputName")byte [] fileByte,Errors errors){
 
 	}
 
