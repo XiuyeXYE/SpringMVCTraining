@@ -2,7 +2,14 @@ package com.xiuye.web.config;
 
 
 
+import javax.servlet.MultipartConfigElement;
+import javax.servlet.ServletContext;
+import javax.servlet.ServletException;
+import javax.servlet.ServletRegistration.Dynamic;
+
 import org.springframework.web.servlet.support.AbstractAnnotationConfigDispatcherServletInitializer;
+
+import com.xiuye.web.servlet.FirstServlet;
 public class SpringWebAppInitializer extends AbstractAnnotationConfigDispatcherServletInitializer {
 
 	@Override
@@ -19,5 +26,20 @@ public class SpringWebAppInitializer extends AbstractAnnotationConfigDispatcherS
 	protected String[] getServletMappings() {
 		return new String[]{"/"};
 	}
+
+	@Override
+	protected void customizeRegistration(Dynamic registration) {
+
+		registration.setMultipartConfig(new MultipartConfigElement("tmp/SpringWebTraining/upload"));
+
+	}
+
+	@Override
+	public void onStartup(ServletContext servletContext) throws ServletException {
+		Dynamic servlet = servletContext.addServlet("firstServlet", FirstServlet.class);
+		servlet.addMapping("/servlet.do");
+	}
+
+
 
 }
